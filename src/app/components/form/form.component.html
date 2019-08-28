@@ -1,13 +1,56 @@
 <div class="container">
-    <h1>Formulário principal</h1>
+    <h1 [style.color]="mainForm.value.corFavorita">Formulário principal</h1>
   <form class="mainForm" [formGroup]="mainForm">
+    <!-- nome -->
     <div class="form-group">
         <label for="nome">Nome</label>
         <input type="text" name="nome" class="form-control" placeholder="Nome" formControlName="nome">
       </div>
+      <!-- Sobrenome -->
+      <div class="form-group">
+          <label for="sobrenome">Sobrenome</label>
+          <input type="text" name="sobrenome" class="form-control" placeholder="Sobrenome" formControlName="sobrenome">
+        </div>
+        <!-- E-mail -->
+        <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="text" name="email" class="form-control" placeholder="E-mail" formControlName="email">
+          </div>
+          <!-- Gênero -->
+          <div class="form-group">
+              <label for="genero">Gênero</label>
+              <select  name="genero" formControlName="genero" class="form-control">
+                <option value="">Selecione</option>
+                <option *ngFor="let genero of generos" [value]="genero.valor">{{genero.nome}}</option>
+              </select>
+          </div>
+
+          <!-- Cores -->
+          <div class="form-group">
+              <label for="corFavorita">Cor favorita</label>
+              <select  name="corFavorita" formControlName="corFavorita" class="form-control">
+                <option value="">Selecione</option>
+                <option [style.backgroundColor]="cor.hex" *ngFor="let cor of cores" [value]="cor.hex">{{cor.nome}}</option>
+              </select>
+          </div>
+
+          <!-- País -->
+          <div class="form-group">
+              <label for="paises">País</label>
+              <select  name="pais" formControlName="pais" class="form-control">
+                <option value="">Selecione</option>
+                <option *ngFor="let pais of paises" [value]="pais.name">{{pais.name}}</option>
+              </select>
+          </div>
+
+          <!-- CPF -->
+          <div class="form-group" *ngIf="mainForm.value.pais=='Brazil'">
+              <label for="cpf">CPF</label>
+              <input type="text" name="cpf" class="form-control" placeholder="CPF" formControlName="cpf">
+            </div>
   </form>
 
-  <pre>
-    {{mainForm.value | json}}
-    </pre>
+  <!-- <pre>
+    {{paises | json}}
+    </pre> -->
 </div>
