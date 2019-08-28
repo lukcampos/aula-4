@@ -1,0 +1,13 @@
+<div class="container">
+    <h1>Formulário principal</h1>
+  <form class="mainForm" [formGroup]="mainForm">
+    <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text" name="nome" class="form-control" placeholder="Nome" formControlName="nome">
+      </div>
+  </form>
+
+  <pre>
+    {{mainForm.value | json}}
+    </pre>
+</div>
